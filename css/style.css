@@ -13,6 +13,7 @@
   background-color: rgba(0, 0, 0, 50%);
   z-index: 2;
   display: none;
+  overflow: visible;
 }
 #overlay.active {
   display: block;
@@ -28,6 +29,8 @@
   padding: 1rem;
   box-sizing: border-box;
   transition: 0.3s ease-in-out;
+  z-index: 3;
+  border-radius: 0.5rem;
 }
 #add-book-modal #add-book-form > * {
   display: block;
@@ -48,6 +51,7 @@
   text-align: left;
   font-weight: bold;
   padding-left: 0.8rem;
+  border: none;
 }
 #add-book-modal #add-book-form button {
   font-size: 18px;
@@ -61,7 +65,7 @@
   font-weight: 500;
 }
 #add-book-modal.active {
-  transform: scale(1);
+  transform: translateX(-50%) translateY(-50%) scale(1);
 }
 
 header {
@@ -97,6 +101,8 @@ main .control button {
   cursor: pointer;
   transition: 0.3s ease-in-out;
   border-radius: 0.4rem;
+  font-weight: bold;
+  font-size: 18px;
 }
 main .control button:hover {
   background-color: var(--button-hover);
@@ -148,7 +154,7 @@ main .books .book button {
   background-color: var(--button-background);
   cursor: pointer;
   font-weight: 600;
-  transition: 0.3s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
 main .books .book button:hover {

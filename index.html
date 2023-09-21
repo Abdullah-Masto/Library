@@ -23,7 +23,7 @@
   <body>
     <div id="overlay"></div>
     <div id="add-book-modal">
-      <form action="" method="post" id="add-book-form">
+      <form action="" method="post" id="add-book-form" autocomplete="off">
         <h2>Add New book</h2>
         <input
           type="text"
@@ -45,12 +45,13 @@
           name="pages"
           id="pages"
           placeholder="Pages"
+          max="10000"
         />
         <div class="check">
           <label for="read">Have you read it ?</label>
           <input type="checkbox" name="read" id="read" />
         </div>
-        <button type="submit">Submit</button>
+        <button id="submit" type="submit">Submit</button>
       </form>
     </div>
     <header>
@@ -66,11 +67,11 @@
       <div class="info">
         <div class="total">
           <span>Total books: </span>
-          <span>0</span>
+          <span id="total">0</span>
         </div>
         <div class="complete">
           <span>Completed books: </span>
-          <span>0</span>
+          <span id="complete">0</span>
         </div>
       </div>
       <div class="books"></div>
