@@ -110,13 +110,15 @@ function toggleState(event) {
   completeCounter.textContent = library.filter((item) => item.read).length;
 }
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+  toggleRead = function () {
+    this.read = !this.read;
+    return this.read;
+  };
 }
-Book.prototype.toggleRead = function () {
-  this.read = !this.read;
-  return this.read;
-};
