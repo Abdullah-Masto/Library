@@ -53,6 +53,15 @@
   padding-left: 0.8rem;
   border: none;
 }
+#add-book-modal #add-book-form input:focus {
+  outline: none;
+}
+#add-book-modal #add-book-form input:invalid {
+  border: 1px red dashed;
+}
+#add-book-modal #add-book-form input:valid {
+  border: 1px green solid;
+}
 #add-book-modal #add-book-form button {
   font-size: 18px;
   padding: 1em;

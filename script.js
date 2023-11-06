@@ -1,4 +1,4 @@
-let library = [];
+let library = JSON.parse(localStorage.getItem("library")) ?? [];
 
 let add = document.querySelector(".control .add");
 let clear = document.querySelector(".control .clear");
@@ -46,6 +46,8 @@ function createBook() {
 function addBookToLibrary(event) {
   event.preventDefault();
   let book = createBook();
+  console.log(book);
+  console.log(JSON.stringify(library));
   library.push(book);
   cancel();
   updateBooks();
@@ -58,6 +60,7 @@ function updateBooks() {
   }
   totalCounter.textContent = library.length;
   completeCounter.textContent = library.filter((item) => item.read).length;
+  localStorage.setItem("library", JSON.stringify(library));
 }
 function buildBook(book) {
   let card = document.createElement("div");
@@ -105,7 +108,11 @@ function decideState(state, completed) {
   }
 }
 function toggleState(event) {
-  completed = event.target.parentNode.owner.toggleRead();
+  target = event.target.parentNode.owner;
+  target.read = !target.read;
+  completed = target.read;
+  library.find((item) => item === target).read = completed;
+  updateBooks();
   decideState(event.target, completed);
   completeCounter.textContent = library.filter((item) => item.read).length;
 }
@@ -117,8 +124,14 @@ class Book {
     this.pages = pages;
     this.read = read;
   }
-  toggleRead = function () {
-    this.read = !this.read;
-    return this.read;
-  };
 }
+
+title.addEventListener("change", () => {
+  if (title.validity.tooLong) {
+    title.setCustomValidity("the title should not be more than 30 character");
+  } else {
+    title.setCustomValidity("");
+  }
+});
+
+updateBooks();
